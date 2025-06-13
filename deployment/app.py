@@ -20,7 +20,8 @@ def find_model():
     print("please place a model file in this directory!")
     
 model_name = find_model()
-model =torch.hub.load("WongKinYiu/yolov7", 'custom',model_name)
+# Load model from the local repository to avoid network dependency
+model = torch.hub.load('.', 'custom', model_name, source='local')
 
 model.eval()
 
